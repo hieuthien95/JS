@@ -1,0 +1,175 @@
+*** 3 STEP TO CREATE PROJECT REACTJS ... ***
+	+	1-like_button
+	+	2-multi-like_button
+	+	3-like_button-babel-JSX
+
+------------------------------------------------------------------------------------
+
+==>> 1-like_button <<==
+
+Step 1: Add a DOM Container to the HTML
+	<body>
+		<!-- ... existing HTML ... -->
+		<div id="like_button_container"></div>
+		<!-- ... existing HTML ... -->  
+	
+Step 2: Add the Script Tags
+		<!-- ... other HTML ... -->
+
+		<!-- Load React. -->
+		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+		<!-- LOAD OUR REACT COMPONENT. -->
+		<script src="1-like_button.js"></script>
+		<!-- LOAD OUR REACT COMPONENT. -->
+
+	</body>
+	
+Step 3: Create a React Component file *.js:
+	'use strict';
+
+	const e = React.createElement;
+
+	class LikeButton extends React.Component {
+	  constructor(props) {
+		super(props);
+		this.state = { liked: false };
+	  }
+
+	  render() {
+		if (this.state.liked) {
+		  return 'You liked this.';
+		}
+
+		return e(
+		  'button',
+		  { onClick: () => this.setState({ liked: true }) },
+		  'Like'
+		);
+	  }
+	}
+
+	const domContainer = document.querySelector('#like_button_container');
+	ReactDOM.render(e(LikeButton), domContainer);
+	
+------------------------------------------------------------------------------------
+
+==>> 2-multi-like_button <<==
+
+Step 1: Add a DOM Container to the HTML
+	<body>
+		<div class="like_button_container" data-commentid="1"></div>
+		<div class="like_button_container" data-commentid="2"></div>
+		<div class="like_button_container" data-commentid="3"></div>
+	
+Step 2: Add the Script Tags
+		<!-- Load React. -->
+		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+		<!-- Load our React component. -->
+		<script src="2-multi-like_button.js"></script>
+
+	</body>
+	
+Step 3: Create a React Component file *.js:
+	'use strict';
+
+	const e = React.createElement;
+
+	class LikeButton extends React.Component {
+	  constructor(props) {
+		super(props);
+		this.state = { liked: false };
+	  }
+
+	  render() {
+		if (this.state.liked) {
+		  return 'You liked comment number ' + this.props.commentID;
+		}
+
+		return e(
+		  'button',
+		  { onClick: () => this.setState({ liked: true }) },
+		  'Like'
+		);
+	  }
+	}
+
+	// Find all DOM containers, and render Like buttons into them.
+	document.querySelectorAll('.like_button_container')
+	  .forEach(domContainer => {
+		// Read the comment ID from a data-* attribute.
+		const commentID = parseInt(domContainer.dataset.commentid, 10);
+		ReactDOM.render(
+		  e(LikeButton, { commentID: commentID }),
+		  domContainer
+		);
+	  });
+	  
+------------------------------------------------------------------------------------
+
+==>> 3-like_button-babel-JSX <<==
+
+Step 1: Add a DOM Container to the HTML
+	<body>
+		<!-- ... existing HTML ... -->
+		<div id="like_button_container"></div>
+		<!-- ... existing HTML ... -->  
+	
+Step 2: Add the Script Tags
+		<!-- Load React. -->
+		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		
+		<!-- Don't use this in production: -->
+		<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+		<!-- LOAD OUR REACT COMPONENT. -->
+		<script type="text/babel">
+			class LikeButton extends React.Component {
+			  constructor(props) {
+				super(props);
+				this.state = { liked: false };
+			  }
+
+			  render() {
+				if (this.state.liked) {
+				  return (<label>You liked this.</label>);
+				}
+
+				// Display a "Like" <button>
+				return (
+				  <button onClick={() => this.setState({ liked: true })}>
+					Like
+				  </button>
+				);
+			  }
+			}
+
+			const domContainer = document.querySelector('#like_button_container');
+			ReactDOM.render(<LikeButton />, domContainer);
+		</script>
+		<!-- LOAD OUR REACT COMPONENT. -->
+
+	</body>
+
+------------------------------------------------------------------------------------
+=============================== Create React App ===================================
+------------------------------------------------------------------------------------
+		npx create-react-app my-app
+		
+		npm init react-app my-app
+		
+		-- npm install yarn
+		-- yarn create react-app my-app
+		
+		cd my-app
+		
+		npm install babel-cli@6 babel-preset-react-app@3
+		
+		npm start

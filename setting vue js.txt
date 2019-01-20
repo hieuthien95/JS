@@ -1,0 +1,11 @@
+npm install -g vue			// cai dat vue
+
+npm install -g vue-cli			// cai dat vue cli
+
+vue init webpack-simple my-project	// clone project sample ve
+
+cd my-project
+
+npm install				// clone cac module trong package json ve
+
+npm run dev				// chay server

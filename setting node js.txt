@@ -1,0 +1,33 @@
+			CAC BUOC CAI DAT
+B1:
+Cai dat NODE JS ban moi nhat:
+	https://nodejs.org/en/
+Day la 1 buoc cai dat: nodejs va npm
+
+B2:
+kiem tra da thanh cong chua:
+	node -v
+	npm -v
+Neu không loi thi thanh cong
+
+B3:
+Cai dat GIT BASH
+	https://git-scm.com/downloads
+
+			*** Cai dat module quan trong ***
+				npm install yarn
+				npm install express
+				npm install babel-cli@6 babel-preset-react-app@3
+----------------------------------------
+			CAC BUOC TAO PROJECT
+B1:
+	Tao forder project
+B2:
+	right click -> GIT BASH HERE
+B3:
+	npm init
+B4: 
+	*** Cai dat module quan trong ***
+B5:
+Sau khi bien soan file server (vd: main.js) thi chay lenh:
+	node main.js
