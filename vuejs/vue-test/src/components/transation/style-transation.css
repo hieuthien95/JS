@@ -1,0 +1,19 @@
+.contain {
+  display: flex;
+  flex-wrap: wrap;
+  width: 230px;
+  margin-top: 10px;
+}
+.cell {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #aaa;
+  margin-right: -1px;
+  margin-bottom: -1px;
+}
+.cell-move {
+  transition: transform 1s;
+}
